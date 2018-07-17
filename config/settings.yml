@@ -8,3 +8,4 @@ feed_per_page: 5
 expired_limit_hour: 2
 micropost_max: 140
 file_limit_size: 5
+small_avatar_size: 30
