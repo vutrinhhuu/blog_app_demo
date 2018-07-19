@@ -1,5 +1,5 @@
 en:
-  app_name: "Sample App"
+  app_name: "My Blog"
   home: "Home"
   help: "Help"
   user: "Users"
@@ -10,7 +10,7 @@ en:
   logout: "Log out"
 
 vi:
-  app_name: "Ứng dụng mẫu"
+  app_name: "Blog của tôi"
   home: "Trang chủ"
   help: "Trợ giúp"
   user: "Người dùng"

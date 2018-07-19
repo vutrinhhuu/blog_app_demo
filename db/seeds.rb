@@ -20,10 +20,19 @@ end
 
 users = User.order(:created_at).take(6)
 50.times do
-  content = Faker::WorldCup.team
-  users.each { |user| user.microposts.create!(content: content) }
+  title = Faker::Space.galaxy
+  content = Faker::Space.agency
+  users.each { |user| user.microposts.create!(content: content, title: title) }
 end
 
+user = User.first
+microposts = Micropost.order(:created_at).take(6)
+10.times do
+  content = Faker::WorldCup.team
+  microposts.each do |micropost|
+    micropost.comments.create!(content: content, user_id: user.id)
+  end
+end
 # Following relationships
 users = User.all
 user  = users.first
