@@ -19,6 +19,8 @@ en:
   body: "Body"
   entry: "Entry"
   our_entries: "Our latest entries"
+  already_login: "You have already logged in!"
+  author: "Author"
 
 vi:
   comment: "Bình luận"
@@ -41,6 +43,8 @@ vi:
   body: "Nội dung"
   entry: "Bài đăng"
   our_entries: "Bài viết mới nhất của chúng tôi"
+  already_login: "Bạn đã đăng nhập rồi!"
+  author: "Tác giả"
   datetime:
     distance_in_words:
       about_x_hours:

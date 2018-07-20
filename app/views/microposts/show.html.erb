@@ -40,7 +40,7 @@
       </blockquote>
 
       <hr>
-      <% if logged_in? && current_user.current_user?(@micropost.user) %>
+      <% if logged_in? %>
         <h3><%= t("comments") %> (<%= @micropost.comments.count %>)</h3>
       <% else %>
         <h3><%= t("comments") %> (<%= @micropost.comments.count %>)</h3>
@@ -50,7 +50,7 @@
       <% end %>
 
       <!-- Comments Form -->
-      <% if logged_in? && current_user.current_user?(@micropost.user) %>
+      <% if logged_in? %>
         <%= form_for(@comment, remote: true) do |f| %>
           <%= render "shared/error_messages", object: f.object %>
           <div class="card my-4">
@@ -90,7 +90,7 @@
 
           <!-- Search Widget -->
           <div class="card my-4">
-            <h5 class="card-header">Author</h5>
+            <h5 class="card-header"><%= t("author") %></h5>
             <div class="card-body">
             <center>
               <section class="user_info">
@@ -98,7 +98,7 @@
                   <%= gravatar_for(@user, size: 60) %>
                   <%= @user.name %>
                 </h1>
-                <span><%= pluralize current_user.microposts.count, t("micropost") %></span>
+                <span><%= pluralize @user.microposts.count, t("micropost") %></span>
               </section>
               <section class="stats">
                 <%= render "shared/stats" %>

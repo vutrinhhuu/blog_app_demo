@@ -1,7 +1,7 @@
 <div class="media mb-4" id="comment_<%= comment.id %>">
   <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
   <div class="media-body">
-    <h5 class="mt-0"><%= comment.user.name %><small><i> <%= time_ago_in_words(comment.created_at) %></i></small></h5>
+    <h5 class="mt-0"><%= comment.user.name %><small><i> ~ <%= time_ago_in_words(comment.created_at) %> <%= t("ago") %></i></small></h5>
         <span id = "comment_content_<%= comment.id %>">
           <%= comment.content %>
         </span>
