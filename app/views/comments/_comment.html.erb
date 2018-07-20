@@ -1,43 +1,44 @@
-<div class="media mb-4">
+<div class="media mb-4" id="comment_<%= comment.id %>">
   <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
   <div class="media-body">
     <h5 class="mt-0"><%= comment.user.name %><small><i> <%= time_ago_in_words(comment.created_at) %></i></small></h5>
-
-        <%= comment.content %>
+        <span id = "comment_content_<%= comment.id %>">
+          <%= comment.content %>
+        </span>
     </br>
     <% if logged_in? && current_user.current_user?(comment.user) %>
-      <span class="badge badge-pill badge-info" data-toggle="modal" data-target="#exampleModal">
-        Edit
+      <span class="badge badge-pill badge-info" data-toggle="modal" data-target="#comment_update_<%= comment.id %>">
+        <%= t("edit") %>
       </span>
 
       <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="comment_update_<%= comment.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit comment</h5>
+              <h5 class="modal-title" id="exampleModalLabel"><%= t("edit_comment") %></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <%= form_for comment do |f| %>
+            <%= form_for(comment, remote: true) do |f| %>
               <div class="modal-body">
                 <%= render "shared/error_messages", object: f.object %>
 
-                <%= f.label "Comment" %>
+                <%= f.label t("comment") %>
                 <%= f.hidden_field :micropost_id, value: @micropost.id %>
                 <%= f.text_field :content, class: "form-control" %>
 
               </div>
               <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <%= f.submit "Save changes", class: "btn btn-primary mb-0 col-4" %>
+               <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t("close") %></button>
+                <%= f.submit t("save_changes"), class: "btn btn-primary mb-0 col-4" %>
               </div>
             <% end %>
           </div>
         </div>
       </div>
-      <small id="comment_<%= comment.id %>"><%= link_to "Delete", comment, method: :delete,
+      <small><%= link_to t("delete"), comment, method: :delete,
         data: { confirm: t("sure_confirm") }, remote: true %></small>
      <% end %>
   </div>

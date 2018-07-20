@@ -4,8 +4,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build comment_params
+    @micropost = @comment.micropost
     if @comment.save
-      redirect_to request.referrer
+      respond_to do |format|
+        format.html { redirect_to request.referrer }
+        format.js
+      end
     else
       flash[:danger] = "Cannot comment"
       redirect_to request.referrer
@@ -17,23 +21,27 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find params[:id]
     if @comment.update_attributes comment_params
-      flash[:success] = "Update comment success"
-      redirect_to request.referrer
+      @cmt_updated = Comment.find @comment.id
+      respond_to do |format|
+        format.html { redirect_to request.referrer }
+        format.js
+      end
     else
-      render :micropost
+      flash[:danger] = "Invalid change"
+      redirect_to request.referrer
     end
   end
 
   def destroy
     if @comment.destroy
       respond_to do |format|
-        format.html { redirect_to @micropost, notice: "Comment was destroyed."}
+        format.html { redirect_to request.referrer }
         format.js
       end
     else
-      flash[:danger] = "Can't delete this comments"
+      redirect_to request.referrer || root_url
+      flash.now[:danger] = "Can't delete this comments"
     end
-    redirect_to request.referrer || root_url
   end
 
   private

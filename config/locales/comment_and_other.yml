@@ -1,0 +1,84 @@
+en:
+  comment: "Comment"
+  comments: "Comments"
+  edit_comment: "Edit comment"
+  close: "Close"
+  save_changes: "Save changes"
+  edit: "Edit"
+  leave_a_comment: "Leave a Comment"
+  un_login_alert: "If you want to post some comments, please"
+  post_by: "Post by"
+  posted: "Posted"
+  by: "by"
+  ago: "ago"
+  read_more: "...READ MORE"
+  create_entry: "Create new entry"
+  new_feed: "New feed"
+  view_profile: "view profile"
+  title: "Title"
+  body: "Body"
+  entry: "Entry"
+  our_entries: "Our latest entries"
+
+vi:
+  comment: "Bình luận"
+  comments: "Bình luận"
+  edit_comment: "Chỉnh sửa bình luận"
+  close: "Đóng"
+  save_changes: "Lưu thay đổi"
+  edit: "Chỉnh sửa"
+  leave_a_comment: "Để lại bình luận"
+  un_login_alert: "Nếu bạn muốn để lại bình luận, xin hãy"
+  post_by: "Đăng bởi"
+  posted: "Đăng"
+  by: "bởi"
+  ago: "trước"
+  read_more: "...ĐỌC THÊM"
+  create_entry: "Tạo bài viết mới"
+  new_feed: "Bảng tin"
+  view_profile: "xem trang cá nhân"
+  title: "Tiêu đề"
+  body: "Nội dung"
+  entry: "Bài đăng"
+  our_entries: "Bài viết mới nhất của chúng tôi"
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: khoảng 1 giờ
+        other: khoảng %{count} giờ
+      about_x_months:
+        one: khoảng 1 tháng
+        other: khoảng %{count} tháng
+      about_x_years:
+        one: khoảng 1 năm
+        other: khoảng %{count} trước
+      almost_x_years:
+        one: gần 1 năm
+        other: gần %{count} năm
+      half_a_minute: nửa phút
+      less_than_x_minutes:
+        zero: 0 phút
+        one: gần 1 phút
+        other: gần %{count} trước
+      less_than_x_seconds:
+        zero: 0 giây
+        one: gần 1 giây
+        other: gần %{count} giây
+      over_x_years:
+        one: hơn 1 năm
+        other: hơn %{count} năm
+      x_days:
+        one: 1 ngày
+        other: "%{count} ngày"
+      x_minutes:
+        one: 1 phút
+        other: "%{count} phút"
+      x_months:
+        one: 1 tháng
+        other: "%{count} tháng"
+      x_years:
+        one: 1 năm
+        other: "%{count} năm"
+      x_seconds:
+        one: 1 giây
+        other: "%{count} giây"

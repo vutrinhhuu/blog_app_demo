@@ -11,14 +11,14 @@
 
       <!-- Author -->
       <p class="lead">
-        by
+        <%= t("by") %>
         <a href="#"><%= link_to @user.name, @micropost.user %></a>
       </p>
 
       <hr>
 
       <!-- Date/Time -->
-      <p>Posted <%= time_ago_in_words(@micropost.created_at) %> ago</p>
+      <p><%= t("posted") %> <%= time_ago_in_words(@micropost.created_at) %> <%= t("ago") %></p>
 
       <hr>
 
@@ -34,32 +34,33 @@
       <p><%= @micropost.content %></p>
 
       <blockquote class="blockquote">
-        <footer class="blockquote-footer">Post by
+        <footer class="blockquote-footer"><%= t("post_by") %>
           <cite title="Source Title"><%= @user.name %></cite>
         </footer>
       </blockquote>
 
       <hr>
       <% if logged_in? && current_user.current_user?(@micropost.user) %>
-        <h3>Comments (<%= @micropost.comments.count %>)</h3>
+        <h3><%= t("comments") %> (<%= @micropost.comments.count %>)</h3>
       <% else %>
-        <h3>Comments (<%= @micropost.comments.count %>)</h3>
+        <h3><%= t("comments") %> (<%= @micropost.comments.count %>)</h3>
         <div class="alert alert-primary" role="alert">
-          If you want to post some comments, please <%= link_to "log in", login_path %>
+          <%=t("un_login_alert")%> <%= link_to t("login"), login_path %>
         </div>
       <% end %>
 
       <!-- Comments Form -->
       <% if logged_in? && current_user.current_user?(@micropost.user) %>
-        <%= form_for @comment do |f| %>
+        <%= form_for(@comment, remote: true) do |f| %>
           <%= render "shared/error_messages", object: f.object %>
           <div class="card my-4">
-            <h5 class="card-header">Leave a Comment:</h5>
+            <h5 class="card-header"><%= t("leave_a_comment") %>:</h5>
             <div class="card-body">
               <form>
                 <div class="form-group">
                   <%= f.hidden_field :micropost_id, value: @micropost.id %>
-                  <%= f.text_area :content, placeholder: "Comment something..." %>
+                  <%= f.text_area :content, placeholder: "Comment something...",
+                    id: "comment_field" %>
                 </div>
                 <%= f.submit t("post"), class: "btn btn-primary" %>
               </form>
@@ -70,9 +71,9 @@
 
       <div class="media mb-4">
         <% if @micropost.comments.any? %>
-          <ol class="comment">
+          <div class="comment" id="micropost_comment">
             <%= render @comments %>
-          </ol>
+          </div>
         <% end %>
       </div>
 
@@ -94,9 +95,10 @@
             <center>
               <section class="user_info">
                 <h1>
-                  <%= gravatar_for @user %>
+                  <%= gravatar_for(@user, size: 60) %>
                   <%= @user.name %>
                 </h1>
+                <span><%= pluralize current_user.microposts.count, t("micropost") %></span>
               </section>
               <section class="stats">
                 <%= render "shared/stats" %>

@@ -15,7 +15,7 @@
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <%= t("account") %> <b class="caret"></b>
+              <%= gravatar_for(current_user, size: 30) %><%= t("account") %> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li class="dropdown-item">

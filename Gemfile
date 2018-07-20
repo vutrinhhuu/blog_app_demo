@@ -14,7 +14,6 @@ gem "sidekiq", "~> 5.0", ">= 5.0.5"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.0"
 gem "sass-rails", "~> 5.0"
-gem "sqlite3"
 gem "uglifier", ">= 1.3.0"
 
 gem "coffee-rails", "~> 4.2"
@@ -30,10 +29,12 @@ gem "jquery-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "sqlite3"
 end
 
 group :production do
-  gem "fog", "~> 2.0"
+  gem "pg"
+  gem "rails_12factor", "~> 0.0.3"
 end
 
 group :development do

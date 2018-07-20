@@ -1,7 +1,7 @@
 en:
-  micropost_created: "Micropost created"
-  micropost_deleted: "Micropost deleted"
-  micropost_cannot_delete: "Can't delete this micropost!"
+  micropost_created: "Entry created"
+  micropost_deleted: "Entry deleted"
+  micropost_cannot_delete: "Can't delete this entry!"
 
 vi:
   micropost_created: "Bài viết đã được đăng"
